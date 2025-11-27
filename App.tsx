@@ -4,7 +4,7 @@ import { blogPosts } from './data';
 import Hero from './components/Hero';
 import ArticleCard from './components/ArticleCard';
 import ArticleView from './components/ArticleView';
-import { LayoutGrid, Menu, Search, X } from 'lucide-react';
+import { LayoutGrid, Menu, Search, X, ShoppingCart } from 'lucide-react';
 
 const App: React.FC = () => {
   const [viewState, setViewState] = useState<ViewState>(ViewState.HOME);
@@ -76,6 +76,20 @@ const App: React.FC = () => {
             <Hero />
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+              
+              <div className="flex justify-center mb-12">
+                <a 
+                  href="https://amzn.to/4848XBI" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-orange-500/40 transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                  <ShoppingCart size={24} className="relative z-10" />
+                  <span className="relative z-10">Confira Ofertas Especiais na Amazon</span>
+                </a>
+              </div>
+
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">Destaques da Semana</h2>
                 <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
