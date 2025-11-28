@@ -214,5 +214,74 @@ export const blogPosts: BlogPost[] = [
         }
       ]
     }
+  },
+  {
+    id: '8',
+    title: 'Notebooks: Ryzen vs Intel',
+    subtitle: 'O embate de titãs: qual processador oferece o melhor desempenho para você em 2024?',
+    category: 'Tecnologia',
+    imageUrl: 'https://image.pollinations.ai/prompt/gaming%20laptop%20split%20background%20blue%20vs%20orange%20processor%20battle%20high%20tech?width=800&height=600&nologo=true',
+    readTime: '5 min',
+    date: '28 Out, 2023',
+    content: {
+      intro: 'A escolha de um notebook começa pelo coração da máquina: o processador. A rivalidade entre Intel e AMD nunca foi tão acirrada, trazendo benefícios incríveis para o consumidor em desempenho e eficiência.',
+      sections: [
+        {
+          title: 'Intel Core & Ultra',
+          items: [
+            'Líderes em desempenho single-core, ideais para tarefas que exigem resposta rápida.',
+            'Arquitetura híbrida (núcleos de performance e eficiência) otimiza o uso.',
+            'Suporte nativo a Thunderbolt 4 para conexões ultra-rápidas.'
+          ]
+        },
+        {
+          title: 'AMD Ryzen',
+          items: [
+            'Eficiência energética superior, garantindo maior duração de bateria em muitos modelos.',
+            'Gráficos integrados (Radeon) geralmente superiores, permitindo jogos leves sem placa dedicada.',
+            'Excelente custo-benefício em multitarefa.'
+          ]
+        },
+        {
+          title: 'O Veredito',
+          items: [
+            'Prioriza bateria e jogos casuais? Vá de Ryzen.',
+            'Precisa de Thunderbolt e força bruta em apps específicos? Vá de Intel.'
+          ]
+        }
+      ]
+    }
+  },
+  {
+    id: '9',
+    title: 'Echo Dot: O Cérebro da Casa',
+    subtitle: 'Como as caixinhas da Amazon com Alexa transformam a automação residencial.',
+    category: 'Smart Home',
+    imageUrl: 'https://image.pollinations.ai/prompt/amazon%20echo%20dot%20smart%20speaker%20on%20wooden%20table%20cozy%20living%20room%20bokeh?width=800&height=600&nologo=true',
+    readTime: '4 min',
+    date: '30 Out, 2023',
+    content: {
+      intro: 'O Echo Dot é, para muitos, o primeiro passo na automação residencial. Compacto e acessível, ele coloca a assistente virtual Alexa em qualquer cômodo, permitindo controle total por voz.',
+      sections: [
+        {
+          title: 'Evolução Sonora',
+          items: [
+            'As novas gerações trazem áudio mais robusto, com graves mais profundos e som frontal direcionado.',
+            'Sensores de temperatura e ultrassom para detecção de presença nas versões mais recentes.'
+          ]
+        },
+        {
+          title: 'Hub de Automação',
+          items: [
+            'Controle lâmpadas, tomadas, TVs e ares-condicionados apenas com comandos de voz.',
+            'Crie rotinas: "Alexa, bom dia" pode acender luzes, ler notícias e ligar a cafeteira.'
+          ]
+        },
+        {
+          title: 'Por que ter um?',
+          items: ['Custo acessível para iniciar uma casa inteligente, compatibilidade universal e milhares de Skills úteis.']
+        }
+      ]
+    }
   }
 ];
