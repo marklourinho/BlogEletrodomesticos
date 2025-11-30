@@ -13,6 +13,7 @@ export interface BlogPost {
     intro: string;
     sections: Section[];
     conclusion?: string;
+    amazonLink?: string;
   };
   readTime: string;
   date: string;

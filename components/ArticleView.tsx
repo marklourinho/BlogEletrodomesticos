@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BlogPost } from '../types';
-import { ArrowLeft, Share2, Sparkles, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Share2, Sparkles, CheckCircle, ShoppingCart } from 'lucide-react';
 import { generateSummary } from '../services/aiService';
 
 interface ArticleViewProps {
@@ -20,6 +20,20 @@ const ArticleView: React.FC<ArticleViewProps> = ({ post, onBack }) => {
     setAiSummary(summary);
     setLoading(false);
   };
+
+  const AmazonButton = ({ link }: { link: string }) => (
+    <div className="my-8 flex justify-center">
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-600 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-orange-500/40 hover:-translate-y-1 transition-all duration-300"
+      >
+        <ShoppingCart size={24} />
+        Ver Ofertas na Amazon
+      </a>
+    </div>
+  );
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 animate-fade-in">
@@ -98,6 +112,11 @@ const ArticleView: React.FC<ArticleViewProps> = ({ post, onBack }) => {
           </div>
 
           <div className="prose prose-lg max-w-none text-gray-700">
+            {/* CTA Button Top */}
+            {post.content.amazonLink && (
+              <AmazonButton link={post.content.amazonLink} />
+            )}
+
             <p className="lead text-xl text-gray-600 mb-8 font-light">
               {post.content.intro}
             </p>
@@ -117,6 +136,18 @@ const ArticleView: React.FC<ArticleViewProps> = ({ post, onBack }) => {
                 </ul>
               </div>
             ))}
+
+            {post.content.conclusion && (
+              <div className="bg-teal-50 p-6 rounded-xl mt-8 mb-8 border border-teal-100">
+                <h3 className="text-xl font-bold text-teal-900 mb-2">Conclusão</h3>
+                <p className="text-teal-800">{post.content.conclusion}</p>
+              </div>
+            )}
+
+            {/* CTA Button Bottom */}
+            {post.content.amazonLink && (
+              <AmazonButton link={post.content.amazonLink} />
+            )}
           </div>
 
           <div className="mt-12 pt-8 border-t border-gray-200 flex justify-between items-center">
