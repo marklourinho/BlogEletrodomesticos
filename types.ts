@@ -21,5 +21,6 @@ export interface BlogPost {
 
 export enum ViewState {
   HOME = 'HOME',
-  ARTICLE = 'ARTICLE'
+  ARTICLE = 'ARTICLE',
+  ABOUT = 'ABOUT'
 }

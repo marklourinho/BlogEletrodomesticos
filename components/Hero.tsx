@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onAboutClick: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onAboutClick }) => {
   return (
     <div className="relative bg-slate-900 text-white overflow-hidden">
       <div className="absolute inset-0">
@@ -24,7 +28,10 @@ const Hero: React.FC = () => {
           <button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg hover:shadow-teal-500/30">
             Explorar Tendências
           </button>
-          <button className="border border-white/30 hover:bg-white/10 text-white px-8 py-3 rounded-lg font-semibold transition-all backdrop-blur-sm">
+          <button 
+            onClick={onAboutClick}
+            className="border border-white/30 hover:bg-white/10 text-white px-8 py-3 rounded-lg font-semibold transition-all backdrop-blur-sm"
+          >
             Sobre Nós
           </button>
         </div>

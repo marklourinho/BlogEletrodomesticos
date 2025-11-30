@@ -4,6 +4,7 @@ import { blogPosts } from './data';
 import Hero from './components/Hero';
 import ArticleCard from './components/ArticleCard';
 import ArticleView from './components/ArticleView';
+import AboutView from './components/AboutView';
 import { LayoutGrid, Menu, Search, X, ShoppingCart } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -20,6 +21,12 @@ const App: React.FC = () => {
   const handleBack = () => {
     setViewState(ViewState.HOME);
     setSelectedPost(null);
+    window.scrollTo(0, 0);
+  };
+
+  const handleAboutClick = () => {
+    setViewState(ViewState.ABOUT);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -33,13 +40,16 @@ const App: React.FC = () => {
               onClick={handleBack}
             >
               <LayoutGrid className="text-teal-600 mr-2" size={28} />
-              <span className="font-bold text-xl tracking-tight text-gray-900">Tech<span className="text-teal-600">Home</span></span>
+              <span className="font-bold text-xl tracking-tight text-gray-900">
+                Tech<span className="text-teal-600">Home</span>
+                <span className="hidden sm:inline-block ml-2 text-sm font-normal text-gray-500">- Mark Lourinho</span>
+              </span>
             </div>
             
             <nav className="hidden md:flex space-x-8">
               <button onClick={handleBack} className={`text-sm font-medium transition-colors ${viewState === ViewState.HOME ? 'text-teal-600' : 'text-gray-500 hover:text-gray-900'}`}>Início</button>
+              <button onClick={handleAboutClick} className={`text-sm font-medium transition-colors ${viewState === ViewState.ABOUT ? 'text-teal-600' : 'text-gray-500 hover:text-gray-900'}`}>Sobre Nós</button>
               <button className="text-gray-500 hover:text-teal-600 transition-colors text-sm font-medium">Categorias</button>
-              <button className="text-gray-500 hover:text-teal-600 transition-colors text-sm font-medium">Reviews</button>
               <button className="text-gray-500 hover:text-teal-600 transition-colors text-sm font-medium">Guia de Compra</button>
             </nav>
 
@@ -62,8 +72,8 @@ const App: React.FC = () => {
           <div className="md:hidden bg-white border-t border-gray-100 py-2">
             <div className="px-2 space-y-1">
               <button onClick={() => { handleBack(); setMobileMenuOpen(false); }} className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">Início</button>
+              <button onClick={() => { handleAboutClick(); setMobileMenuOpen(false); }} className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Sobre Nós</button>
               <button className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Categorias</button>
-              <button className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Reviews</button>
             </div>
           </div>
         )}
@@ -71,9 +81,9 @@ const App: React.FC = () => {
 
       {/* Main Content */}
       <main className="flex-grow">
-        {viewState === ViewState.HOME ? (
+        {viewState === ViewState.HOME && (
           <>
-            <Hero />
+            <Hero onAboutClick={handleAboutClick} />
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
               
@@ -102,10 +112,30 @@ const App: React.FC = () => {
                   <ArticleCard key={post.id} post={post} onClick={handlePostClick} />
                 ))}
               </div>
+
+              {/* Botão Final do Blog */}
+              <div className="mt-16 flex justify-center">
+                <a 
+                  href="https://amzn.to/4oublXb" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-teal-600 to-emerald-600 text-white font-bold text-xl rounded-full shadow-xl hover:shadow-teal-500/40 transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                  <ShoppingCart size={28} className="relative z-10" />
+                  <span className="relative z-10">Ver Mais Ofertas Imperdíveis</span>
+                </a>
+              </div>
             </div>
           </>
-        ) : (
-          selectedPost && <ArticleView post={selectedPost} onBack={handleBack} />
+        )}
+
+        {viewState === ViewState.ARTICLE && selectedPost && (
+          <ArticleView post={selectedPost} onBack={handleBack} />
+        )}
+
+        {viewState === ViewState.ABOUT && (
+          <AboutView onBack={handleBack} />
         )}
       </main>
 
@@ -116,7 +146,7 @@ const App: React.FC = () => {
             <div>
               <div className="flex items-center mb-4">
                 <LayoutGrid className="text-teal-400 mr-2" size={24} />
-                <span className="font-bold text-xl tracking-tight">Tech<span className="text-teal-400">Home</span></span>
+                <span className="font-bold text-xl tracking-tight">Tech<span className="text-teal-400">Home</span> - Mark Lourinho</span>
               </div>
               <p className="text-gray-400 text-sm">
                 Seu guia definitivo para a casa do futuro. Análises, dicas e tendências sobre eletrodomésticos e automação residencial.
@@ -128,7 +158,7 @@ const App: React.FC = () => {
                 <li><a href="#" className="hover:text-white transition-colors">Cozinhas Inteligentes</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Robôs Aspiradores</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Economia de Energia</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Casas Pequenas</a></li>
+                <li><button onClick={handleAboutClick} className="hover:text-white transition-colors">Sobre Nós</button></li>
               </ul>
             </div>
             <div>
@@ -147,7 +177,7 @@ const App: React.FC = () => {
             </div>
           </div>
           <div className="mt-8 border-t border-slate-800 pt-8 text-center text-gray-500 text-sm">
-            &copy; 2023 TechHome. Todos os direitos reservados.
+            &copy; 2023 TechHome - Mark Lourinho. Todos os direitos reservados.
           </div>
         </div>
       </footer>
